@@ -23,7 +23,7 @@ public struct HelenaWeatherView: View {
             Text("Weather in: \(weatherData?.city ?? "unknown") is \(weatherData?.degree ?? "unknown")")
             Image(systemName: weatherData?.weather.rawValue ?? "")
         }.onAppear {
-            
+            requestWeather()
         }
     }
 }
