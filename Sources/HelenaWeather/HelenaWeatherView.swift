@@ -21,9 +21,9 @@ public struct HelenaWeatherView: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             HStack(alignment: .lastTextBaseline) {
-                VStack {
+                VStack(alignment: .leading) {
                     Text(weatherData?.city ?? "-----")
                         .font(.headline)
                     Text("\(weatherData?.degree ?? "---")°")
