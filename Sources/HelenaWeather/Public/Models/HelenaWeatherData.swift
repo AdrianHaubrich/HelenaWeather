@@ -40,4 +40,8 @@ public struct HelenaWeatherData {
         .drizzle:           "cloud.drizzle.fill"
     ]
     
+    public func getIcon() -> String {
+        return HelenaWeatherData.weatherIconNameDict[self.weather] ?? HelenaWeatherData.weatherIconNameDict[.loading] ?? "no image"
+    }
+    
 }

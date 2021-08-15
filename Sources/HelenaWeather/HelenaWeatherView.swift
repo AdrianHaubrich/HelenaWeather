@@ -13,16 +13,37 @@ public struct HelenaWeatherView: View {
     @State var weatherHandler: HelenaWeather
     @State var weatherData: HelenaWeatherData?
     
-    public init(apiKey: String) {
+    var showCredits: Bool
+    
+    public init(apiKey: String, showCredits: Bool? = nil) {
         self.weatherHandler = HelenaWeather(apiKey: apiKey)
+        self.showCredits = showCredits ?? true
     }
     
     public var body: some View {
-        VStack {
-            Text("Hello, World!")
-            Text("Weather in: \(weatherData?.city ?? "unknown") is \(weatherData?.degree ?? "unknown")")
-            Image(systemName: weatherData?.weather.rawValue ?? "")
-        }.onAppear {
+        VStack(alignment: .leading) {
+            HStack(alignment: .lastTextBaseline) {
+                VStack {
+                    Text(weatherData?.city ?? "-----")
+                        .font(.headline)
+                    Text("\(weatherData?.degree ?? "---")°")
+                        .font(.title2)
+                    Image(systemName: weatherData?.getIcon() ?? "\(HelenaWeatherData.weatherIconNameDict[.loading] ?? "no icon")")
+                }
+                Spacer()
+                VStack {
+                    if showCredits {
+                        Text("Powered by OpenWeatherMap")
+                            .font(.caption2)
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 10)
+        .onAppear {
             requestWeather()
         }
     }
@@ -34,7 +55,6 @@ extension HelenaWeatherView {
         let london = CLLocationCoordinate2D(latitude: 51.508530, longitude: -0.076132)
         self.weatherHandler.requestWeather(for: london) { (success, weatherData) in
             if (success) {
-                print("Loaded weather: \(String(describing: weatherData))")
                 self.weatherData = weatherData
             }
         }
