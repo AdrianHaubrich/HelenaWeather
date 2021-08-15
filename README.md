@@ -1,5 +1,7 @@
 # HelenaWeather
 
+Offers an easy way to fetch weather data in Swift. Based on the OpenWeatherMap-Api.
+
 ### Supported Platforms
 iOS 14
 
