@@ -10,9 +10,9 @@ import Foundation
 public struct HelenaWeatherData {
     
     // Data
-    var city: String
-    var degree: String
-    var weather: HelenaWeatherIcon
+    public var city: String
+    public var degree: String
+    public var weather: HelenaWeatherIcon
     
     public init() {
         self.city = "--------"
@@ -27,7 +27,7 @@ public struct HelenaWeatherData {
     }
     
     // MARK: Icon
-    static var weatherIconNameDict: [HelenaWeatherIcon: String] = [
+    public static var weatherIconNameDict: [HelenaWeatherIcon: String] = [
         .loading:           "circles.hexagonpath",
         .clearSkyD:         "sun.max.fill",
         .fewCloudsD:        "cloud.sun.fill",
