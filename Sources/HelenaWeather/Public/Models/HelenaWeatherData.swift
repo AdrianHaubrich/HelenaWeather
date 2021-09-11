@@ -14,6 +14,18 @@ public struct HelenaWeatherData {
     var degree: String
     var weather: HelenaWeatherIcon
     
+    public init() {
+        self.city = "--------"
+        self.degree = "--"
+        self.weather = HelenaWeatherIcon.loading
+    }
+    
+    public init(city: String, degree: String, weather: HelenaWeatherIcon) {
+        self.city = city
+        self.degree = degree
+        self.weather = weather
+    }
+    
     // MARK: Icon
     static var weatherIconNameDict: [HelenaWeatherIcon: String] = [
         .loading:           "circles.hexagonpath",

@@ -11,7 +11,7 @@ import MapKit
 public struct HelenaWeatherView: View {
     
     @State var weatherHandler: HelenaWeather
-    @State var weatherData: HelenaWeatherData?
+    @State var weatherData = HelenaWeatherData()
     
     var showCredits: Bool
     
@@ -24,11 +24,11 @@ public struct HelenaWeatherView: View {
         VStack {
             HStack(alignment: .lastTextBaseline) {
                 VStack(alignment: .leading) {
-                    Text(weatherData?.city ?? "-----")
+                    Text(weatherData.city)
                         .font(.headline)
-                    Text("\(weatherData?.degree ?? "---")°")
+                    Text("\(weatherData.degree)°")
                         .font(.title2)
-                    Image(systemName: weatherData?.getIcon() ?? "\(HelenaWeatherData.weatherIconNameDict[.loading] ?? "no icon")")
+                    Image(systemName: weatherData.getIcon())
                 }
                 Spacer()
                 VStack {
@@ -55,7 +55,9 @@ extension HelenaWeatherView {
         let london = CLLocationCoordinate2D(latitude: 51.508530, longitude: -0.076132)
         self.weatherHandler.requestWeather(for: london) { (success, weatherData) in
             if (success) {
-                self.weatherData = weatherData
+                if let weatherData = weatherData {
+                    self.weatherData = weatherData
+                }
             }
         }
     }

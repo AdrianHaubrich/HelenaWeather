@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HelenaWeatherIcon: String {
+public enum HelenaWeatherIcon: String {
     // Loading
     case loading =      "loading"
     
