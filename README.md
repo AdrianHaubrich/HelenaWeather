@@ -1,3 +1,9 @@
+# IMPORTANT
+The content of this repository is now a part of Olympus and therefore **deprecated**.
+
+This repository won't be available in the future. Please use [Olympus](https://github.com/AdrianHaubrich/Olympus).
+
+
 # HelenaWeather
 
 Offers an easy way to fetch weather data in Swift. Based on the OpenWeatherMap-Api.
